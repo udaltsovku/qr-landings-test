@@ -7,32 +7,25 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-icon',
     '@pinia/nuxt',
-    'nuxt-monaco-editor'
   ],
-  monacoEditor: {
-    locale: 'ru',
-    componentName: {
-      codeEditor: 'MonacoEditor',
-      diffEditor: 'MonacoDiffEditor'
-    }
-  },
   ssr: false,
   runtimeConfig: {
     public: {
       apiHost: process.env.API_HOST || "http://localhost:3000",
-      appTitle: process.env.APP_TITLE || "Amaya Admin",
+      appTitle: process.env.APP_TITLE || "qr-landing",
     },
     contentfulToken: process.env.CONTENTFUL_TOKEN,
     contentfulSpace: process.env.CONTENTFUL_SPACE,
     contentfulEnv: process.env.CONTENTFUL_ENV,
     contentfulCmaToken: process.env.CONTENTFUL_CMA_TOKEN,
+    sanityReadToken: process.env.SANITY_READ_TOKEN,
+    sanityWriteToken: process.env.SANITY_WRITE_TOKEN,
+    sanityProjectId: process.env.SANITY_PROJECT_ID,
+    sanityDataset: process.env.SANITY_DATASET,
+    sanityApiVersion: process.env.SANITY_API_VERSION || '2026-01-19',
   },
   css: [
-    'vue-final-modal/style.css',
-    '@/node_modules/amaya-components/dist/style.css',
-    '@/node_modules/element-plus/dist/index.css',
     "@/assets/styles/pages.scss",
-    "@/assets/styles/el-table-over.scss"
   ],
   imports: {
     dirs: [
@@ -47,4 +40,13 @@ export default defineNuxtConfig({
       })
     ]
   },
+  app: {
+    head: {
+    meta: [
+      { name: 'theme-color', content: '#F97A19' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'default' }
+    ],
+    viewport: 'width=device-width, initial-scale=1, viewport-fit=cover'
+  }
+  }
 } as any)
